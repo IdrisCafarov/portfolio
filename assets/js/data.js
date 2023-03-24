@@ -27,9 +27,9 @@ fetch("https://admin.qaraqura.com/portfolio/2/")
     [...email].map((mail) => {
       mail.innerText = portfolio.mail;
     });
-    // [...adress].map((adr) => {
-    //   adr.innerText = portfolio.adress;
-    // });
+    [...adress].map((adr) => {
+      adr.innerText = portfolio.adress;
+    });
     [...image].map((img) => {
       img.src = portfolio.image;
     });
@@ -48,7 +48,7 @@ fetch("https://admin.qaraqura.com/portfolio/2/")
     [...github].map((gh) => {
       gh.href = portfolio.github;
     });
-    // pageTitle.innerText = portfolio.page_title;
+    pageTitle.innerText = portfolio.page_title;
     titleAbout.innerText = portfolio.title_about;
     experienceYear.innerText = `${portfolio.experience_year}+`;
     projectsCount.innerText = `${portfolio.projects_count}+`;
