@@ -649,8 +649,9 @@ main.drake-main {
   display: block;
   margin-bottom: 56px;
   /* width: 300px; */
-  max-height: 220px;
+  max-height: 250px;
   object-fit: cover;
+  width: 100%;
 }
 .left-sidebar div img {
     margin-left: 20px;
