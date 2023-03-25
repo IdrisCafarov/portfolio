@@ -18,6 +18,8 @@ let experiencesDiv = document.querySelector(".exp");
 let specializations = document.querySelector(".services-items");
 let advantagesDiv = document.querySelector(".row.skills.text-center");
 let projectsDiv = document.querySelector(".row.portfolio-items");
+let modal_add_data = document.querySelector("#modal_add_data");
+
 fetch("https://admin.qaraqura.com/portfolio/2/")
   .then((a) => a.json())
   .then((portfolio) => {
@@ -127,7 +129,9 @@ fetch("https://admin.qaraqura.com/portfolio/2/")
       skillName.innerText = skil.name;
       skillDiv.append(skillInner, skillName);
     });
+
     let projects = portfolio.projects;
+    console.log(projects, "projectsssssssss");
     projects.map((project, index) => {
       let div = document.createElement("div");
       if ((index + 3) % 4 === 0 || (index + 2) % 4 === 0) {
@@ -142,14 +146,17 @@ fetch("https://admin.qaraqura.com/portfolio/2/")
       div.append(portfolioItem);
       let portfolioItemInner = document.createElement("div");
       portfolioItemInner.classList.add("portfolio-item-inner");
+      portfolioItemInner.setAttribute("data-bs-toggle", "modal");
+      portfolioItemInner.setAttribute("data-bs-target", "#id2");
       portfolioItemInner.setAttribute("data-lightbox", "example-1");
+      portfolioItemInner.setAttribute("id", `project-${project.id}`);
       let portfolioNameH2 = document.createElement("h2");
       let portfolioName = document.createElement("a");
       portfolioName.innerText = project.name;
       portfolioNameH2.append(portfolioName);
       portfolioItem.append(portfolioItemInner, portfolioNameH2);
       let portfolioLink = document.createElement("a");
-    //   portfolioLink.href = project.main_image;/
+      //   portfolioLink.href = project.main_image;/
       let portfolioMainImage = document.createElement("img");
       portfolioMainImage.src = project.main_image;
       portfolioMainImage.setAttribute("alt", "Portfolio");
@@ -178,5 +185,91 @@ fetch("https://admin.qaraqura.com/portfolio/2/")
       //   projectImageDiv.append(projectImage);
       //   projectDiv.append(projectImageDiv, projectText);
       //   projectsDiv.append(projectDiv);
+
+      // __________________________________________________
+
+      let portfolioItemInners = document.querySelectorAll(
+        ".portfolio-item-inner"
+      );
+      // console.log(portfolioItemInners);
+
+      portfolioItemInner.addEventListener("click", (event) => {
+        let clickedId = event.currentTarget.getAttribute("id");
+        console.log(clickedId); // or do something else with the clickedId
+
+        // Make API request
+
+        fetch(`https://admin.qaraqura.com/project/${clickedId.split("-")[1]}/`)
+          .then((response) => {
+            if (response.ok) {
+              return response.json();
+            } else {
+              throw new Error("API request failed.");
+            }
+          })
+          .then((data) => {
+            console.log(data);
+            // let detail = document.createElement("div");
+            // detail.classList.add("modal_data_div");
+
+            // let detailVideo = document.createElement("div");
+            // detailVideo.classList.add("modal_data_div_img");
+            // let detailMainVideo = document.createElement("img");
+            // detailMainVideo.src = data.main_image;
+            // detailMainVideo.setAttribute("alt", "Portfolio");
+            // detailVideo.append(detailMainVideo);
+
+            // detail.append(detailVideo);
+            // modal_add_data.append(detail);
+
+            modal_add_data.innerHTML = `
+              <div class="modal_data_div">
+              <div class="modal_data_div_img">
+ ${data.video_link}
+  
+</div>
+
+              <div
+                class="modal_data_div_tecnology"
+              >
+                <ul>
+                  ${data.technology.map(
+                    (i) => `
+                  <li>${i.name}</li>
+
+                    `
+                  )}
+                </ul>
+              </div>
+              <div>
+                <h2>
+                  ${data.main_title}
+                  elit.
+                </h2>
+                <p>
+                  ${data.text}
+                </p>
+              </div>
+              <div
+                class="modal_mini_img_div"
+              >
+              ${data.images
+                .map(
+                  (i) => `
+              <div class="modal_mini_img_div1" >
+                <img src="${i.image}" />
+              </div>
+            `
+                )
+                .join("")}
+              </div>
+            </div>
+              
+              `;
+          });
+        // .catch((error) => {
+        //   console.error(error);
+        // });
+      });
     });
   });
