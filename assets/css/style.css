@@ -992,6 +992,7 @@ body .body-overlay {
   border-radius: 30px;
   position: relative;
   margin-bottom: 30px;
+  cursor: pointer;
 }
 .portfolio-items .portfolio-item.portfolio-full .portfolio-item-inner {
   height: 410px;
@@ -2088,4 +2089,9 @@ body .body-overlay {
   .modal_mini_img_div1 {
     width: 100%;
   }
+}
+.icon_title {
+  width: 160px;
+  height: 160px;
+  /* object-fit: fill; */
 }

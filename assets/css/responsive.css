@@ -23,7 +23,7 @@
   }
   .left-sidebar > img.me {
     width: 100%;
-    max-width: 250px;
+    max-width: 300px;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 46px;
@@ -56,7 +56,7 @@
     display: block;
   }
   .left-sidebar > img.me {
-    width: auto;
+    /* width: auto; */
   }
   .icon-menu {
     position: fixed;
