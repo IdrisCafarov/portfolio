@@ -235,13 +235,22 @@ fetch("https://admin.qaraqura.com/portfolio/2/")
                 class="modal_data_div_tecnology"
               >
                 <ul>
-                  ${data.technology.map(
-                    (i) => `
-                  <li>${i.name}</li>
+                  ${data.technology.map((i) => `<li>${i.name}</li>`)}
+                </ul> <br/>
+               
+                <b>
+                ${
+                  data.url
+                    ? "Project URL: " +
+                      "<a href='" +
+                      data.url +
+                      "'>" +
+                      data.url +
+                      "</a>"
+                    : ""
+                }
+              </b>
 
-                    `
-                  )}
-                </ul>
               </div>
               <div>
                 <h2>

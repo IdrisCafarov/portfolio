@@ -2075,6 +2075,10 @@ body .body-overlay {
   margin-bottom: 40px;
   border-radius: 10px;
 }
+.modal_data_div_tecnology a {
+  color: gray;
+}
+
 .modal_data_div_tecnology ul {
   display: flex;
   padding: 0;
