@@ -2087,6 +2087,7 @@ body .body-overlay {
 }
 .modal_data_div_img_no {
   height: 0px;
+  display: none;
 }
 @media screen and (max-width: 1200px) {
   .modal_mini_img_div1 {
