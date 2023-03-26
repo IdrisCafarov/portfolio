@@ -224,7 +224,9 @@ fetch("https://admin.qaraqura.com/portfolio/2/")
 
             modal_add_data.innerHTML = `
               <div class="modal_data_div">
-              <div class="modal_data_div_img">
+              <div class="${
+                data.video_link ? "modal_data_div_img" : "modal_data_div_img_no"
+              }">
  ${data.video_link}
   
 </div>
