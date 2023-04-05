@@ -255,7 +255,7 @@ fetch("https://admin.qaraqura.com/portfolio/2/")
               <div>
                 <h2>
                   ${data.main_title}
-                  elit.
+              
                 </h2>
                 <p>
                   ${data.text}
